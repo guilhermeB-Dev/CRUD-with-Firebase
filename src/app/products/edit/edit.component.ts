@@ -9,7 +9,7 @@ import { Product } from 'src/app/modules/product';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  products: Product;
+  product: Product;
   key: string = '';
 
   types = ['Tipo 1', 'Tipo 2', 'Tipo 3', 'Outros'];
@@ -19,16 +19,16 @@ export class EditComponent implements OnInit {
     private _servicesDataService: ServicesDataService
   ) {}
 
-  ngOnInit(): void {
-    this.products = new Product();
-    this._servicesDataService.productAtual.subscribe((data) => {
-      if (data.product && data.key) {
-        this.products = new Product();
-        this.products.code = data.product.code;
-        this.products.name = data.product.name;
-        this.products.dropdown = data.product.dropdown;
-        this.products.value = data.product.value;
-        this.products.text = data.product.text;
+  ngOnInit() {
+    this.product = new Product();
+    this._servicesDataService.productAtual.subscribe(data => {
+      if ( data.product && data.key ) {
+        this.product = new Product();
+        this.product.code = data.product.code;
+        this.product.name = data.product.name;
+        this.product.dropdown = data.product.dropdown;
+        this.product.value = data.product.value;
+        this.product.text = data.product.text;
         this.key = data.key;
       }
     });
@@ -36,12 +36,12 @@ export class EditComponent implements OnInit {
 
   onSubmit() {
     if (this.key) {
-      this._servicesService.update(this.products, this.key);
+      this._servicesService.update(this.product, this.key);
     } else {
-      this._servicesService.insert(this.products);
+      this._servicesService.insert(this.product);
     }
 
-    this.products = new Product();
+    this.product = new Product();
     this.key = null;
   }
 }

@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
     private _servicesDataService: ServicesDataService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.products = this._servicesService.getAll();
   }
 
@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
     this._servicesService.dalete(key);
   }
 
-  edit(products: Product, key: string) {
-    this._servicesDataService.obtemProduct(products, key);
+  edit(product: Product, key: string) {
+    this._servicesDataService.obtemProduct(product, key);
   }
 }

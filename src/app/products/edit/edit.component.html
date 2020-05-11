@@ -10,7 +10,7 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="products.code"
+              [(ngModel)]="product.code"
               placeholder="Codigo do produto"
               [ngModelOptions]="{ standalone: true }"
             />
@@ -18,7 +18,7 @@
           <div class="form-group col-md-4">
             <label>Nome</label>
             <input
-              [(ngModel)]="products.name"
+              [(ngModel)]="product.name"
               type="text"
               class="form-control"
               aria-label="Text input with dropdown button"
@@ -32,7 +32,7 @@
               <select
                 class="form-control"
                 name="status"
-                [(ngModel)]="products.dropdown"
+                [(ngModel)]="product.dropdown"
                 [ngModelOptions]="{ standalone: true }"
               >
                 <option selected>Selecionar tipo</option>
@@ -53,7 +53,7 @@
               <span class="input-group-text">R$</span>
             </div>
             <input
-              [(ngModel)]="products.value"
+              [(ngModel)]="product.value"
               type="text"
               aria-label="Amount"
               placeholder="Escreva o valor"
@@ -68,7 +68,7 @@
           <label>Descrição</label>
           <textarea
             class="form-control"
-            [(ngModel)]="products.text"
+            [(ngModel)]="product.text"
             rows="2"
             [ngModelOptions]="{ standalone: true }"
           ></textarea>

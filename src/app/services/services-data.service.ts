@@ -3,17 +3,16 @@ import { BehaviorSubject } from 'rxjs';
 import { Product } from '../modules/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServicesDataService {
+  constructor() {}
 
-  constructor() { }
-
-  private productSource = new BehaviorSubject({product: null, key: ''});
+  private productSource = new BehaviorSubject({ product: null, key: '' });
 
   productAtual = this.productSource.asObservable();
 
-  obtemProduct(product: Product, key: string){
-    this.productSource.next({ product: product, key: key});
+  obtemProduct(product: Product, key: string) {
+    this.productSource.next({ product: product, key: key });
   }
 }

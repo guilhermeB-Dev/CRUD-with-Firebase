@@ -9,22 +9,20 @@ import { AngularFireDatabase } from '@angular/fire/database/angular-fire-databas
 export class ServicesService {
   constructor(private _angularFireDatabase: AngularFireDatabase) {}
 
-  insert(product: Product) {
+  insert(Product: Product) {
     this._angularFireDatabase
-      .list('productList')
-      .push(product)
+      .list("productsList").push(Product)
       .then((result: any) => {
         console.log(result.key);
       });
   }
 
-  update(product: Product, key: string) {
-    this._angularFireDatabase.list('productList').update(key, product);
+  update(Product: Product, key: string) {
+    this._angularFireDatabase.list("productsList").update(key, Product);
   }
 
   getAll() {
-    return this._angularFireDatabase
-      .list('productList')
+    return this._angularFireDatabase.list("productsList")
       .snapshotChanges()
       .pipe(
         map((changes) => {
@@ -33,10 +31,10 @@ export class ServicesService {
             ...(c.payload.val() as any),
           }));
         })
-      );
+      )
   }
 
   dalete(key: string) {
-    this._angularFireDatabase.object(`productList/${key}`).remove();
+    this._angularFireDatabase.object(`productsList/${key}`).remove();
   }
 }
