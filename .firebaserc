@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "crud-with-firebase-a1141": {
+      "hosting": {
+        "CRUD-with-Firebase": [
+          "crud-with-firebase-a1141"
+        ]
+      }
+    }
+  }
+}

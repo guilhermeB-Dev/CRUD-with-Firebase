@@ -1,0 +1,84 @@
+<h3>Cadastro de Produtos</h3>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="container-fluid">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Codigo produtos</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="products.code"
+              placeholder="Codigo do produto"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Nome</label>
+            <input
+              [(ngModel)]="products.name"
+              type="text"
+              class="form-control"
+              aria-label="Text input with dropdown button"
+              placeholder="Nome do produto"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+          <div class="dropdown col-md-2">
+            <div class="form-group">
+              <label for="status">Tipo do Produto</label>
+              <select
+                class="form-control"
+                name="status"
+                [(ngModel)]="products.dropdown"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option selected>Selecionar tipo</option>
+                <option
+                  *ngFor="let type of types"
+                  [value]="type"
+                  [selected]="type"
+                  >{{ type }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label>Valor do Produto</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">R$</span>
+            </div>
+            <input
+              [(ngModel)]="products.value"
+              type="text"
+              aria-label="Amount"
+              placeholder="Escreva o valor"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea
+            class="form-control"
+            [(ngModel)]="products.text"
+            rows="2"
+            [ngModelOptions]="{ standalone: true }"
+          ></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-outline-primary md-2">
+            Confirmar cadastro
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
