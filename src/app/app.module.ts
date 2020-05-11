@@ -9,27 +9,25 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
-
-import { ProductsComponent } from './products/products.component';
-
-import { EditComponent } from './products/edit/edit.component';
-import { ListComponent } from './products/list/list.component';
 import { environment } from 'src/environments/environment';
+import { RouterModule } from '@angular/router';
+import { ProductRoutingModule } from './products/product-routing.module';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductsComponent,
-    EditComponent,
-    ListComponent,
+    AppComponent
   ],
   imports: [
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ProductModule,
+    ProductRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

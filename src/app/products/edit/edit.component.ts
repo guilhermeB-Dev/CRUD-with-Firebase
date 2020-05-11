@@ -4,7 +4,7 @@ import { ServicesDataService } from '../../services/services-data.service';
 import { Product } from 'src/app/modules/product';
 
 @Component({
-  selector: 'app-edit',
+  selector: 'edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
 })

@@ -3,6 +3,7 @@ import { ServicesService } from 'src/app/services/services.service';
 import { ServicesDataService } from 'src/app/services/services-data.service';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/modules/product';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +15,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private _servicesService: ServicesService,
-    private _servicesDataService: ServicesDataService
+    private _servicesDataService: ServicesDataService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -27,5 +29,9 @@ export class ListComponent implements OnInit {
 
   edit(product: Product, key: string) {
     this._servicesDataService.obtemProduct(product, key);
+  }
+
+  goToAddProduct() {
+    this.router.navigate(['edit']);
   }
 }
