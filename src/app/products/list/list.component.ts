@@ -3,7 +3,9 @@ import { ServicesService } from 'src/app/services/services.service';
 import { ServicesDataService } from 'src/app/services/services-data.service';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/modules/product';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { format } from 'url';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -12,11 +14,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   products: Observable<any>;
+  product: Product;
+  key: string = '';
 
   constructor(
     private _servicesService: ServicesService,
     private _servicesDataService: ServicesDataService,
-    private router: Router
+    private router: Router 
   ) {}
 
   ngOnInit() {
@@ -29,9 +33,13 @@ export class ListComponent implements OnInit {
 
   edit(product: Product, key: string) {
     this._servicesDataService.obtemProduct(product, key);
+    this.router.navigate(['edit']);
   }
 
   goToAddProduct() {
+
+    this._servicesDataService.clear();
     this.router.navigate(['edit']);
+
   }
 }

@@ -20,6 +20,10 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.newRegister();
+  }
+
+  newRegister(){
     this.product = new Product();
     this._servicesDataService.productAtual.subscribe(data => {
       if ( data.product && data.key ) {
