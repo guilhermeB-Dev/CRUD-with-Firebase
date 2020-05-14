@@ -37,7 +37,6 @@ export class ListComponent implements OnInit {
   }
 
   goToAddProduct() {
-
     this._servicesDataService.clear();
     this.router.navigate(['edit']);
 

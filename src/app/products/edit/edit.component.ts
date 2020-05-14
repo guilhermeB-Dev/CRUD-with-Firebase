@@ -22,21 +22,17 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.product = new Product();
     this.newRegister();
   }
 
-  newRegister(){
-    this.product = new Product();
-    this._servicesDataService.productAtual.subscribe(data => {
-      if ( data.product && data.key ) {
-        this.product = new Product();
-        this.product.code = data.product.code;
-        this.product.name = data.product.name;
-        this.product.dropdown = data.product.dropdown;
-        this.product.value = data.product.value;
-        this.product.text = data.product.text;
-        this.key = data.key;
-      }
+  newRegister() {
+    if (this._servicesDataService.productAtual == null) return;
+
+    this._servicesDataService.productAtual.subscribe((data) => {
+      if (!data.product || !data.key) return;
+      this.product = this.setValues(this.product, data.product);
+      this.key = data.key;
     });
   }
 
@@ -51,7 +47,14 @@ export class EditComponent implements OnInit {
     this.key = null;
   }
 
-  back(){
+  back() {
     this.router.navigate(['list']);
+  }
+
+  setValues(origin, destiny) {
+    for (let [key, value] of Object.entries(origin)) {
+      destiny[key] = value;
+    }
+    return destiny;
   }
 }
