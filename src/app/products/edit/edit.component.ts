@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services/services.service';
 import { ServicesDataService } from '../../services/services-data.service';
 import { Product } from 'src/app/modules/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'edit',
@@ -16,7 +17,8 @@ export class EditComponent implements OnInit {
 
   constructor(
     private _servicesService: ServicesService,
-    private _servicesDataService: ServicesDataService
+    private _servicesDataService: ServicesDataService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -47,5 +49,9 @@ export class EditComponent implements OnInit {
 
     this.product = new Product();
     this.key = null;
+  }
+
+  back(){
+    this.router.navigate(['list']);
   }
 }
