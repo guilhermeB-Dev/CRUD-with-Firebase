@@ -4,8 +4,6 @@ import { ServicesDataService } from 'src/app/services/services-data.service';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/modules/product';
 import { Router } from '@angular/router';
-import { format } from 'url';
-import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
