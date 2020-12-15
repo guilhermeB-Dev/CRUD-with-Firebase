@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
   newRegister() {
     if (this._servicesDataService.productAtual == null) return;
 
-    this._servicesDataService.productAtual.subscribe((data) => {
+    this._servicesDataService.productAtual.subscribe(data => {
       if (!data.product || !data.key) return;
       this.product = this.setValues(this.product, data.product);
       this.key = data.key;
@@ -57,4 +57,5 @@ export class EditComponent implements OnInit {
     }
     return destiny;
   }
+
 }

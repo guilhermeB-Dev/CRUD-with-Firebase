@@ -15,8 +15,7 @@
       <tbody>
         <tr *ngFor="let p of products | async">
           <th scope="row">
-            <button class="btn btn-outline-primary md-2"
-              (click)="edit(p, p.key)">
+            <button class="btn btn-outline-primary md-2" (click)="edit(p, p.key)">
               Edit
             </button>
             <button class="btn btn-outline-danger ml-2" (click)="delete(p.key)">
@@ -26,19 +25,12 @@
           <td>{{ p.code }}</td>
           <td>{{ p.name }}</td>
           <td>{{ p.dropdown }}</td>
-          <td>R${{ p.value }}</td>
+          <td>{{ p.value | currency: 'BRL': 'symbol-narrow' }}</td>
           <td>{{ p.text }}</td>
           <td>
             <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="defaultCheck1"
-              />
-              <label class="form-check-label" for="defaultCheck1"
-                >Marcar produto</label
-              >
+              <input class="form-check-input" type="checkbox" id="defaultCheck1"/>
+              <label class="form-check-label" for="defaultCheck1">Marcar produto</label>
             </div>
           </td>
         </tr>
